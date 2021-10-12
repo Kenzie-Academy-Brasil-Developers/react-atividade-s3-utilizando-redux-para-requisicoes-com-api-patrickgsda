@@ -1,9 +1,9 @@
-import axios from "axios";
 import api from "../../../services/api";
 import { addDigimon } from "./actions";
 const addDigimonsThunk = (digimon, setError) => (dispatch) => {
   api
-    .then((response) => dispatch(addDigimon(response.data[0].name)))
+    .get(`/name/${digimon}`)
+    .then((response) => dispatch(addDigimon(response.data[0])))
     .catch((err) => {
       console.error("faiou meu bom..." + err);
     });
